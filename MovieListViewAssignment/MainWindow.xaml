@@ -49,7 +49,11 @@
             <ComboBox Name="CbxGenre"></ComboBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-            <Canvas Name="CanPoster" Width="250" Height="400"></Canvas>
+            <Canvas  Name="CanPoster" Width="250" Height="400">
+                <Canvas.Background>
+                    <!--<ImageBrush ImageSource="{Binding ElementName=LbxMovies, Path=SelectedItem}"></ImageBrush>--> 
+                </Canvas.Background>
+            </Canvas>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
             <TextBlock Width="250"></TextBlock>
