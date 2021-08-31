@@ -15,9 +15,12 @@ namespace MovieListViewAssignment
     /// </summary>
     public partial class App : Application
     {
-        private void App_Startup()
+        
+
+        private void Application_Startup(object sender, StartupEventArgs e)
         {
             var mainWindow = new MainWindow(new MovieViewModel(new MovieDataService()));
+            mainWindow.Show();
         }
     }
 }

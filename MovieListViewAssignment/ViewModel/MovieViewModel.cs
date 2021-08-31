@@ -14,12 +14,12 @@ namespace MovieListViewAssignment.ViewModel
     public class MovieViewModel : INotifyPropertyChanged
     {
         private IMovieDataService _movieDataService;
-        private ObservableCollection<Movie> Movies;
+        private ObservableCollection<Movie> _movies;
 
         public MovieViewModel(IMovieDataService movieDataService)
         {
             _movieDataService = movieDataService;
-            Movies = new ObservableCollection<Movie>();
+            _movies = new ObservableCollection<Movie>();
         }
 
         public void LoadMovies()
@@ -28,7 +28,7 @@ namespace MovieListViewAssignment.ViewModel
 
             foreach (Movie m in movies)
             {
-                Movies.Add(m);
+                _movies.Add(m);
             }
         }
 
@@ -38,6 +38,10 @@ namespace MovieListViewAssignment.ViewModel
         {
             get { return selectedMovie; }
             set { selectedMovie = value; OnPropertyChanged(nameof(selectedMovie)); }
+        }
+        public ObservableCollection<Movie> Movies
+        {
+            get { return _movies; }
         }
 
         public void OnPropertyChanged(string propertyName)
