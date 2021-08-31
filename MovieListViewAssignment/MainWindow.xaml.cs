@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieListViewAssignment.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,14 @@ namespace MovieListViewAssignment
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly MovieViewModel _movieViewModel;
+        public MainWindow(MovieViewModel movieViewModel)
         {
             InitializeComponent();
+
+            _movieViewModel = movieViewModel;
+            _movieViewModel.LoadMovies();
+            DataContext = _movieViewModel;
         }
     }
 }

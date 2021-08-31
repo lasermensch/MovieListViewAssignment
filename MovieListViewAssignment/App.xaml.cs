@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MovieListViewAssignment.DataAccessLayer;
+using MovieListViewAssignment.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,9 @@ namespace MovieListViewAssignment
     /// </summary>
     public partial class App : Application
     {
+        private void App_Startup()
+        {
+            var mainWindow = new MainWindow(new MovieViewModel(new MovieDataService()));
+        }
     }
 }
