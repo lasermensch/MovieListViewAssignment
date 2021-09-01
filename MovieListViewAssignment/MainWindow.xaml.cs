@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Http;
 
 namespace MovieListViewAssignment
 {
@@ -21,11 +22,12 @@ namespace MovieListViewAssignment
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly HttpClient _httpClient;
         private readonly MovieViewModel _movieViewModel;
         public MainWindow(MovieViewModel movieViewModel)
         {
             InitializeComponent();
-
+            _httpClient = new HttpClient(); //Vi ska lösa hur vi ska hitta filmerna från det nämnda api:et.
             _movieViewModel = movieViewModel;
             _movieViewModel.LoadMovies();
             DataContext = _movieViewModel;

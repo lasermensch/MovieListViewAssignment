@@ -15,6 +15,7 @@ namespace MovieListViewAssignment.ViewModel
     {
         private IMovieDataService _movieDataService;
         private ObservableCollection<Movie> _movies;
+        private string[] _genres;
 
         public MovieViewModel(IMovieDataService movieDataService)
         {
@@ -30,6 +31,11 @@ namespace MovieListViewAssignment.ViewModel
             {
                 _movies.Add(m);
             }
+        }
+        public string[] Genres
+        {
+            get{ return _genres; }
+            set { _genres = value}
         }
 
         private Movie selectedMovie;

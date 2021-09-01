@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MovieListViewAssignment"
         mc:Ignorable="d"
         Title="InteractiveMovieList" Height="450" Width="800" ResizeMode="NoResize">
-    <!--<Window.Resources>
+    <Window.Resources>
         <Style x:Key="DefaultStyle" TargetType="{x:Type FrameworkElement}">
             <Setter Property="ItemsControl.BorderBrush" Value="White"/>
             <Setter Property="ItemsControl.Background" Value="MidnightBlue"/>
@@ -15,14 +15,15 @@
         <Style TargetType="Grid" BasedOn="{StaticResource DefaultStyle}">
 
         </Style>
-        <Style TargetType="ListBox" BasedOn="{StaticResource DefaultStyle}">
-            <Setter Property="Template">
+        <Style TargetType="ListView" BasedOn="{StaticResource DefaultStyle}">
+            <!--<Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="ListBox">
+                    <ControlTemplate TargetType="ListView">
                         
                     </ControlTemplate>
+                    
                 </Setter.Value>
-            </Setter>
+            </Setter>>-->
         </Style>
         <Style TargetType="TextBlock" BasedOn="{StaticResource DefaultStyle}">
             
@@ -33,10 +34,10 @@
         <Style TargetType="ComboBox" BasedOn="{StaticResource DefaultStyle}">
             
         </Style>
-        <Style TargetType="Canvas" BasedOn="{StaticResource DefaultStyle}">
+        <Style TargetType="Image" BasedOn="{StaticResource DefaultStyle}">
             
         </Style>
-    </Window.Resources>-->
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.75*" />
@@ -46,10 +47,10 @@
         <StackPanel Grid.Column="0" HorizontalAlignment="Center">
             <Label Content="Movie List"></Label>
             <ListView ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" DisplayMemberPath="MovieName" Name="LbxMovies" Width="170" Height="200" ></ListView>
-            <ComboBox Name="CbxGenre"></ComboBox>
+            <ComboBox Name="CbxGenre" ItemsSource="{Binding Genre}"></ComboBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-            <Image Source="{Binding ElementName=LbxMovies}" ></Image>
+            <Image Source="{Binding ElementName=LbxMovies, Path=SelectedItem.MoviePicUri}" ></Image>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
             <TextBlock Width="250"></TextBlock>
