@@ -45,15 +45,11 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" HorizontalAlignment="Center">
             <Label Content="Movie List"></Label>
-            <ListView ItemsSource="{Binding Movies}" SelectedItem="{Binding selectedMovie}" DisplayMemberPath="MovieName" Name="LbxMovies" Width="170" Height="200" ></ListView>
+            <ListView ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" DisplayMemberPath="MovieName" Name="LbxMovies" Width="170" Height="200" ></ListView>
             <ComboBox Name="CbxGenre"></ComboBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-            <Canvas  Name="CanPoster" Width="250" Height="400">
-                <Canvas.Background>
-                    <!--<ImageBrush ImageSource="{Binding ElementName=LbxMovies, Path=SelectedItem}"></ImageBrush>--> 
-                </Canvas.Background>
-            </Canvas>
+            <Image Source="{Binding ElementName=LbxMovies}" ></Image>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
             <TextBlock Width="250"></TextBlock>
