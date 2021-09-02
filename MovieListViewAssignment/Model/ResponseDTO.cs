@@ -10,6 +10,6 @@ namespace MovieListViewAssignment.Model
     public class ResponseDTO
     {
         [JsonPropertyName("results")]
-        public IEnumerable<Movie> Movies { get; set; }
+        public List<Movie> Movies { get; set; }
     }
 }

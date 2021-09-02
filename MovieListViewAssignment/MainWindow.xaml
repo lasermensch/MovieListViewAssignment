@@ -50,12 +50,12 @@
             <ComboBox Name="CbxGenre" ItemsSource="{Binding Genre}"></ComboBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-            <Image Source="https://image.tmdb.org/t/p/w154{Binding ElementName=LbxMovies, Path=SelectedItem.MoviePicUri}" ></Image>
+            <Image Source="{Binding ElementName=LbxMovies, Path=SelectedItem.PosterSource}" ></Image>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
-            <TextBlock Width="250"></TextBlock>
-            <TextBlock Width="250" Height="250"></TextBlock>
-            <Label Width="150" HorizontalAlignment="Right"  Content="{Binding ElementName=LbxMovies, Path=SelectedItem.Genre}"></Label>
+            <TextBlock Width="250" TextWrapping="Wrap" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.PosterSource, StringFormat=https://image.tmdb.org/t/p/w154{0:F0}}"></TextBlock>
+            <TextBlock Width="250" Height="250" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.Overview}"></TextBlock>
+            <Label Width="150" HorizontalAlignment="Right"  Content="{Binding ElementName=LbxMovies, Path=SelectedItem.PosterSource}"></Label>
         </StackPanel>
     </Grid>
 </Window>

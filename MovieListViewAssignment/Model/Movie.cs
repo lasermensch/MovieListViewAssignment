@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 namespace MovieListViewAssignment.Model
 {
     public class Movie
     {
+        [JsonProperty("id")]
         public string Id { get; set; }
-        [JsonPropertyName("original_title")]
+        [JsonProperty("original_title")]
         public string Title { get; set; }
-        public int[] Genres { get; set; }
+        [JsonProperty("genres")]
+        public string[] Genres { get; set; }
+        [JsonProperty("overview")]
         public string Overview { get; set; }
-        [JsonPropertyName("poser_source")]
+        [JsonProperty("poster_path")]
         public string PosterSource { get; set; } //https://image.tmdb.org/t/p/w154 + relative-path
     }
 

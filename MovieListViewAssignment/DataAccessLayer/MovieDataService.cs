@@ -24,13 +24,17 @@ namespace MovieListViewAssignment.DataAccessLayer
         public async Task<IEnumerable<Movie>> GetMovies()
         {
             IEnumerable<Movie> movies;
+            
             using (HttpClient client = new HttpClient())
             {
                 string url = "https://api.themoviedb.org/3/movie/popular?api_key=5b40569a2d41ea78d5234f14d761cb2f"; //lista över populära filmer
-                HttpResponseMessage resp = await client.GetAsync(url);
+                HttpResponseMessage resp = client.GetAsync(url).Result; //Så här ska vi göra.
                 string jresp = await resp.Content.ReadAsStringAsync();
-                ResponseDTO respDto = JsonConvert.DeserializeObject<ResponseDTO>(jresp);
-                movies = respDto.Movies;
+
+                dynamic obj = JsonConvert.DeserializeObject(jresp);
+
+                movies = JsonConvert.DeserializeObject<List<Movie>>(JsonConvert.SerializeObject(obj["results"])); //Denna fungerar, men det är inte snyggt.
+                
             }
             return movies;
         }
