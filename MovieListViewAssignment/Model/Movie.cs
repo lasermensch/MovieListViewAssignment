@@ -2,23 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace MovieListViewAssignment.Model
 {
     public class Movie
     {
-        public string MovieName { get; internal set; }
-        public String Genre { get; set; }
-        public string MoviePicUri { get; set; }
-        public string Synopsis { get; set; }
+        public string Id { get; set; }
+        [JsonPropertyName("original_title")]
+        public string Title { get; set; }
+        public int[] Genres { get; set; }
+        public string Overview { get; set; }
+        [JsonPropertyName("poser_source")]
+        public string PosterSource { get; set; } //https://image.tmdb.org/t/p/w154 + relative-path
     }
 
-    public enum Genre
-    {
-        Horror,
-        Thriller,
-        Comedy,
-        Drama
-    }
+    
 }

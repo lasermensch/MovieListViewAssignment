@@ -25,7 +25,7 @@ namespace MovieListViewAssignment.ViewModel
 
         public void LoadMovies()
         {
-            var movies = _movieDataService.GetMovies();
+            var movies = _movieDataService.GetMovies().Result;
 
             foreach (Movie m in movies)
             {
