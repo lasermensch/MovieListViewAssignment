@@ -35,7 +35,7 @@ namespace MovieListViewAssignment.ViewModel
         public string[] Genres
         {
             get{ return _genres; }
-            set { _genres = value}
+            set { _genres = value; }
         }
 
         private Movie selectedMovie;

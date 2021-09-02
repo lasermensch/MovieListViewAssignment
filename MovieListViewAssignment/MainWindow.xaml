@@ -55,7 +55,7 @@
         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
             <TextBlock Width="250"></TextBlock>
             <TextBlock Width="250" Height="250"></TextBlock>
-            <TextBlock Width="150" HorizontalAlignment="Right" Text="Genre"></TextBlock>
+            <Label Width="150" HorizontalAlignment="Right" Foreground="White" Content="{Binding ElementName=LbxMovies, Path=SelectedItem.Genre}"></Label>
         </StackPanel>
     </Grid>
 </Window>

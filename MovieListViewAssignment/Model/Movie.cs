@@ -9,7 +9,7 @@ namespace MovieListViewAssignment.Model
     public class Movie
     {
         public string MovieName { get; internal set; }
-        public Genre Genre { get; set; }
+        public String Genre { get; set; }
         public string MoviePicUri { get; set; }
         public string Synopsis { get; set; }
     }
