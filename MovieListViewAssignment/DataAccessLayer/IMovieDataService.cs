@@ -8,7 +8,7 @@ namespace MovieListViewAssignment.DataAccessLayer
     {
         Task<IEnumerable<Movie>> GetMovies();
         //IEnumerable<string> GetTitles();
-        //IEnumerable<string> GetGenres();
+        Task<IEnumerable<Genre>> GetGenres();
         Movie GetMovie();
 
 

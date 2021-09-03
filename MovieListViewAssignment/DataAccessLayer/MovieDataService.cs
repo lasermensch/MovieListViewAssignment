@@ -32,11 +32,24 @@ namespace MovieListViewAssignment.DataAccessLayer
                 string jresp = await resp.Content.ReadAsStringAsync();
 
                 dynamic obj = JsonConvert.DeserializeObject(jresp);
-
                 movies = JsonConvert.DeserializeObject<List<Movie>>(JsonConvert.SerializeObject(obj["results"])); //Denna fungerar, men det är inte snyggt.
                 
             }
             return movies;
+        }
+        public async Task<IEnumerable<Genre>> GetGenres()
+        {
+            IEnumerable<Genre> genres;
+
+            using (HttpClient client = new HttpClient())
+            {
+                string url = "https://api.themoviedb.org/3/genre/movie/list?api_key=5b40569a2d41ea78d5234f14d761cb2f&language=en-US";
+                HttpResponseMessage resp = client.GetAsync(url).Result;
+                string jresp = await resp.Content.ReadAsStringAsync();
+                dynamic obj = JsonConvert.DeserializeObject(jresp);
+                genres = JsonConvert.DeserializeObject<List<Genre>>(JsonConvert.SerializeObject(obj["genres"]));
+            }
+            return genres;
         }
         public Movie GetMovie()
         {

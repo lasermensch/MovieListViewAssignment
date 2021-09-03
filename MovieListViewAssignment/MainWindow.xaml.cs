@@ -14,12 +14,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Http;
+using System.Globalization;
 
 namespace MovieListViewAssignment
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
+    //public sealed class ImageConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, CultureInfo cultureInfo)
+    //    {
+    //        try
+    //        {
+    //            string fullPath = Path.GetFullPath()
+    //        }
+    //    }
+
+    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    { throw new NotImplementedException(); }
+    //}
     public partial class MainWindow : Window
     {
         
@@ -30,6 +45,7 @@ namespace MovieListViewAssignment
             
             _movieViewModel = movieViewModel;
             _movieViewModel.LoadMovies();
+            _movieViewModel.LoadGenres();
             DataContext = _movieViewModel;
 
             

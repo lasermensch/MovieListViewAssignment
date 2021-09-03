@@ -15,14 +15,17 @@ namespace MovieListViewAssignment.ViewModel
     {
         private IMovieDataService _movieDataService;
         private ObservableCollection<Movie> _movies;
-        private string[] _genres;
+        private ObservableCollection<Genre> _genres;
+        private Movie selectedMovie;
+        private Genre selectedGenre;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public MovieViewModel(IMovieDataService movieDataService)
         {
             _movieDataService = movieDataService;
             _movies = new ObservableCollection<Movie>();
+            _genres = new ObservableCollection<Genre>();
         }
-
         public void LoadMovies()
         {
             var movies = _movieDataService.GetMovies().Result;
@@ -32,22 +35,33 @@ namespace MovieListViewAssignment.ViewModel
                 _movies.Add(m);
             }
         }
-        public string[] Genres
+        public void LoadGenres()
         {
-            get{ return _genres; }
-            set { _genres = value; }
-        }
+            var genres = _movieDataService.GetGenres().Result;
 
-        private Movie selectedMovie;
-        public event PropertyChangedEventHandler PropertyChanged;
+            foreach (Genre g in genres)
+            {
+                _genres.Add(g);
+            }
+        }
+        
         public Movie SelectedMovie
         {
             get { return selectedMovie; }
             set { selectedMovie = value; OnPropertyChanged(nameof(selectedMovie)); }
         }
+        public Genre SelectedGenre
+        {
+            get { return selectedGenre; }
+            set { selectedGenre = value; OnPropertyChanged(nameof(selectedGenre)); }
+        }
         public ObservableCollection<Movie> Movies
         {
             get { return _movies; }
+        }
+        public ObservableCollection<Genre> Genres
+        {
+            get { return _genres; }
         }
 
         public void OnPropertyChanged(string propertyName)

@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="InteractiveMovieList" Height="450" Width="800" ResizeMode="NoResize">
     <Window.Resources>
+        
         <Style x:Key="DefaultStyle" TargetType="{x:Type FrameworkElement}">
             <Setter Property="ItemsControl.BorderBrush" Value="White"/>
             <Setter Property="ItemsControl.Background" Value="MidnightBlue"/>
@@ -47,15 +48,16 @@
         <StackPanel Grid.Column="0" HorizontalAlignment="Center">
             <Label Content="Movie List"></Label>
             <ListView ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" DisplayMemberPath="Title" Name="LbxMovies" Width="170" Height="200" ></ListView>
-            <ComboBox Name="CbxGenre" ItemsSource="{Binding Genre}"></ComboBox>
+            <ComboBox Name="CbxGenre" ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedGenre}" DisplayMemberPath="Name"></ComboBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-            <Image Source="{Binding ElementName=LbxMovies, Path=SelectedItem.PosterSource}" ></Image>
+            <TextBlock Name="FullImageURI" Visibility="Hidden" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.PosterSource, StringFormat=https://image.tmdb.org/t/p/w154{0:F0}}"></TextBlock>
+            <Image Source="{Binding ElementName=FullImageURI, Path=Text}" ></Image>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
-            <TextBlock Width="250" TextWrapping="Wrap" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.PosterSource, StringFormat=https://image.tmdb.org/t/p/w154{0:F0}}"></TextBlock>
-            <TextBlock Width="250" Height="250" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.Overview}"></TextBlock>
-            <Label Width="150" HorizontalAlignment="Right"  Content="{Binding ElementName=LbxMovies, Path=SelectedItem.PosterSource}"></Label>
+            <TextBlock Width="250" TextWrapping="Wrap" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.Title}"></TextBlock>
+            <TextBlock Width="250" Height="250" TextWrapping="Wrap" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.Overview}"></TextBlock>
+            <Label Width="150" HorizontalAlignment="Right"  Content="{}"></Label>
         </StackPanel>
     </Grid>
 </Window>
