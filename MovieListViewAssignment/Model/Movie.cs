@@ -13,8 +13,8 @@ namespace MovieListViewAssignment.Model
         public string Id { get; set; }
         [JsonProperty("original_title")]
         public string Title { get; set; }
-        [JsonProperty("genres")]
-        public string[] Genres { get; set; }
+        [JsonProperty("genre_ids")]
+        public ICollection<int> Genres { get; set; }
         [JsonProperty("overview")]
         public string Overview { get; set; }
         [JsonProperty("poster_path")]

@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MovieListViewAssignment.ViewModel
 {
@@ -25,6 +26,37 @@ namespace MovieListViewAssignment.ViewModel
             _movieDataService = movieDataService;
             _movies = new ObservableCollection<Movie>();
             _genres = new ObservableCollection<Genre>();
+
+        }
+        public Movie SelectedMovie
+        {
+            get { return selectedMovie; }
+            set { selectedMovie = value; OnPropertyChanged(nameof(selectedMovie)); }
+        }
+        public Genre SelectedGenre
+        {
+            get { return selectedGenre; }
+            set { selectedGenre = value; 
+                OnPropertyChanged(nameof(selectedGenre)); }
+        }
+        public void FilterByGenre(Genre selectedGenre)
+        {
+            if (selectedGenre == null)
+                return;
+            foreach (Movie m in _movies)
+            {
+                if (!m.Genres.Any(g => g == selectedGenre.Id))
+                    _movies.Remove(m);
+            }
+
+        }
+        public ObservableCollection<Movie> Movies
+        {
+            get { return _movies; }
+        }
+        public ObservableCollection<Genre> Genres
+        {
+            get { return _genres; }
         }
         public void LoadMovies()
         {
@@ -43,26 +75,10 @@ namespace MovieListViewAssignment.ViewModel
             {
                 _genres.Add(g);
             }
+            selectedGenre = _genres.FirstOrDefault();
         }
         
-        public Movie SelectedMovie
-        {
-            get { return selectedMovie; }
-            set { selectedMovie = value; OnPropertyChanged(nameof(selectedMovie)); }
-        }
-        public Genre SelectedGenre
-        {
-            get { return selectedGenre; }
-            set { selectedGenre = value; OnPropertyChanged(nameof(selectedGenre)); }
-        }
-        public ObservableCollection<Movie> Movies
-        {
-            get { return _movies; }
-        }
-        public ObservableCollection<Genre> Genres
-        {
-            get { return _genres; }
-        }
+        
 
         public void OnPropertyChanged(string propertyName)
         {
