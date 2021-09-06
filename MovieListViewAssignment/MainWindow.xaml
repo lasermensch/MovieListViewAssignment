@@ -60,8 +60,8 @@
         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
             <TextBlock Width="250" TextWrapping="Wrap" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.Title}"></TextBlock>
             <TextBlock Width="250" Height="250" TextWrapping="Wrap" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.Overview}"></TextBlock>
-            <TextBlock Width="150" HorizontalAlignment="Right" Text="{Binding GenresOfSelectedMovie}"></TextBlock>
-            
+            <!--<TextBlock Width="150" HorizontalAlignment="Right" Text="{Binding GenresOfSelectedMovie}"></TextBlock>-->
+            <!--Någonting behöver göra här...-->
         </StackPanel>
     </Grid>
 </Window>

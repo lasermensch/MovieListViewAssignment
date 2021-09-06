@@ -22,19 +22,7 @@ namespace MovieListViewAssignment
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     
-    //public sealed class ImageConverter : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo cultureInfo)
-    //    {
-    //        try
-    //        {
-    //            string fullPath = Path.GetFullPath()
-    //        }
-    //    }
-
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    { throw new NotImplementedException(); }
-    //}
+    
     public partial class MainWindow : Window
     {
         
