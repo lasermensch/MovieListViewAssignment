@@ -36,19 +36,23 @@ namespace MovieListViewAssignment.ViewModel
         public Genre SelectedGenre
         {
             get { return selectedGenre; }
-            set { selectedGenre = value; 
+            set { selectedGenre = value; LoadMovies(value.Id);
                 OnPropertyChanged(nameof(selectedGenre)); }
         }
-        public void FilterByGenre(Genre selectedGenre)
+        public string GenresOfSelectedMovie //Needs work...
         {
-            if (selectedGenre == null)
-                return;
-            foreach (Movie m in _movies)
-            {
-                if (!m.Genres.Any(g => g == selectedGenre.Id))
-                    _movies.Remove(m);
+            get { 
+                string s = "";
+                if(SelectedMovie != null)
+                {
+                foreach (int g in selectedMovie.Genres)
+                {
+                    string n = _genres.ElementAt(g).Name;
+                    s += $"{n}, ";
+                }
+                s.TrimEnd(new char[] { ',', ' '});
             }
-
+            return s;}
         }
         public ObservableCollection<Movie> Movies
         {
@@ -58,10 +62,10 @@ namespace MovieListViewAssignment.ViewModel
         {
             get { return _genres; }
         }
-        public void LoadMovies()
+        public void LoadMovies(int genreId)
         {
-            var movies = _movieDataService.GetMovies().Result;
-
+            var movies =  _movieDataService.GetMovies(genreId).Result;
+            _movies.Clear();
             foreach (Movie m in movies)
             {
                 _movies.Add(m);
@@ -75,7 +79,7 @@ namespace MovieListViewAssignment.ViewModel
             {
                 _genres.Add(g);
             }
-            selectedGenre = _genres.FirstOrDefault();
+            
         }
         
         

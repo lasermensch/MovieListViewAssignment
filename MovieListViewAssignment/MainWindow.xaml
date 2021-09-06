@@ -25,6 +25,9 @@
                     
                 </Setter.Value>
             </Setter>>-->
+            <!--<Style.Triggers>
+                <DataTrigger Binding="{}"
+            </Style.Triggers>-->
         </Style>
         <Style TargetType="TextBlock" BasedOn="{StaticResource DefaultStyle}">
             
@@ -32,9 +35,9 @@
         <Style TargetType="Label" BasedOn="{StaticResource DefaultStyle}">
             
         </Style>
-        <Style TargetType="ComboBox" BasedOn="{StaticResource DefaultStyle}">
+        <!--<Style TargetType="ComboBox" BasedOn="{StaticResource DefaultStyle}">
             
-        </Style>
+        </Style>-->
         <Style TargetType="Image" BasedOn="{StaticResource DefaultStyle}">
             
         </Style>
@@ -47,7 +50,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" HorizontalAlignment="Center">
             <Label Content="Movie List"></Label>
-            <ListView ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" DisplayMemberPath="Title" Name="LbxMovies" Width="170" Height="200" ></ListView>
+            <ListView ItemsSource="{Binding Movies}"  SelectedItem="{Binding SelectedMovie}" DisplayMemberPath="Title" Name="LbxMovies" Width="170" Height="200"></ListView>
             <ComboBox Name="CbxGenre" ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedGenre}" DisplayMemberPath="Name"></ComboBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
@@ -57,7 +60,8 @@
         <StackPanel HorizontalAlignment="Center" Grid.Column="2">
             <TextBlock Width="250" TextWrapping="Wrap" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.Title}"></TextBlock>
             <TextBlock Width="250" Height="250" TextWrapping="Wrap" Text="{Binding ElementName=LbxMovies, Path=SelectedItem.Overview}"></TextBlock>
-            <Label Width="150" HorizontalAlignment="Right"  Content="{}"></Label>
+            <TextBlock Width="150" HorizontalAlignment="Right" Text="{Binding GenresOfSelectedMovie}"></TextBlock>
+            
         </StackPanel>
     </Grid>
 </Window>

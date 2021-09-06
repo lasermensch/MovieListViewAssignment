@@ -6,7 +6,7 @@ namespace MovieListViewAssignment.DataAccessLayer
 {
     public interface IMovieDataService
     {
-        Task<IEnumerable<Movie>> GetMovies();
+        Task<IEnumerable<Movie>> GetMovies(int genreId);
         //IEnumerable<string> GetTitles();
         Task<IEnumerable<Genre>> GetGenres();
         Movie GetMovie();

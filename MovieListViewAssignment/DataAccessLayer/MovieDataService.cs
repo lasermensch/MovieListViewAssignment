@@ -21,13 +21,16 @@ namespace MovieListViewAssignment.DataAccessLayer
         //    yield return new Movie() { MovieName = "The Departed", Genre = Genre.Thriller.ToString(), MoviePicUri = "https://m.media-amazon.com/images/M/MV5BMTI1MTY2OTIxNV5BMl5BanBnXkFtZTYwNjQ4NjY3._V1_.jpg" };
         //    yield return new Movie() { MovieName = "One Flew Over the Cuckoo's Nest", Genre = Genre.Drama.ToString(), MoviePicUri = "https://d2iltjk184xms5.cloudfront.net/uploads/photo/file/63055/small_original.jpg" };
         //}
-        public async Task<IEnumerable<Movie>> GetMovies()
+        public async Task<IEnumerable<Movie>> GetMovies(int genreId = -1)
         {
             IEnumerable<Movie> movies;
             
             using (HttpClient client = new HttpClient())
             {
-                string url = "https://api.themoviedb.org/3/movie/popular?api_key=5b40569a2d41ea78d5234f14d761cb2f"; //lista över populära filmer
+                string genreFilter = $"&with_genres={genreId}";
+                if (genreId == -1)
+                    genreFilter = "";
+                string url = $"https://api.themoviedb.org/3/discover/movie?api_key=5b40569a2d41ea78d5234f14d761cb2f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1{genreFilter}&with_watch_monetization_types=flatrate"; //lista över populära filmer
                 HttpResponseMessage resp = client.GetAsync(url).Result; //Så här ska vi göra.
                 string jresp = await resp.Content.ReadAsStringAsync();
 

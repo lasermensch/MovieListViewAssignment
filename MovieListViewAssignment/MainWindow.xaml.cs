@@ -44,7 +44,7 @@ namespace MovieListViewAssignment
             InitializeComponent();
             
             _movieViewModel = movieViewModel;
-            _movieViewModel.LoadMovies();
+            _movieViewModel.LoadMovies(-1);
             _movieViewModel.LoadGenres();
             DataContext = _movieViewModel;
 
